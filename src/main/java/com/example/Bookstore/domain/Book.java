@@ -1,4 +1,4 @@
-package com.example.Bookstore;
+package com.example.Bookstore.domain;
 
 public class Book {
 	
