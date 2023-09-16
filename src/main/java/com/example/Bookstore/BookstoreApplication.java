@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookstoreRepository;
+import com.example.Bookstore.domain.Category;
+import com.example.Bookstore.domain.CategoryRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,18 +23,21 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookstoreRepository repository) {
+	public CommandLineRunner bookDemo(BookstoreRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
+			
 			log.info("save a couple of books");
-			repository.save(new Book("Jesse James", "Aikamoista!", 1975, "123456-8", 20));
-			repository.save(new Book("Meikä Manne", "Olut maistuisi nyt", 2020, "12345-12", 15));	
+	        crepository.save(new Category("Romaanit"));
+	        crepository.save(new Category("Novellit"));
+			
+			brepository.save(new Book("Jesse James", "Aikamoista!", 1975, "123456-8", 20, crepository.findByName("Romaanit").get(0)));
+			brepository.save(new Book("Meikä Manne", "Olut maistuisi nyt", 2020, "12345-12", 15, crepository.findByName("Novellit").get(0)));
 			
 			log.info("fetch all books");
-			for (Book book : repository.findAll()) {
+			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
 			
 	};
 	}
 }
-
