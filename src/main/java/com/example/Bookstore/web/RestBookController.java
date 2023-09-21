@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,16 +22,16 @@ import com.example.Bookstore.domain.BookstoreRepository;
 	private BookstoreRepository brepository;
 		
 		@GetMapping("/books")
-		public @ResponseBody List<Book> bookListRest() {	
+		public List<Book> bookListRest() {	
 	        return (List<Book>) brepository.findAll();
 		}
-		@GetMapping("/book{id}")
-	    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {	
+		@GetMapping("/book/{id}")
+	    public Optional<Book> findBookRest(@PathVariable("id") Long bookId) {	
 	    	return brepository.findById(bookId);
 		} 
-		@PostMapping("/save")
-	    public String save(Book book){
-	        brepository.save(book);
-	        return "redirect:booklist";
+		@PostMapping("/book")
+	    public Book save(@RequestBody Book book){
+	        return brepository.save(book);
+	        
 		}	
 }
