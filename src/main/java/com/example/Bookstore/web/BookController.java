@@ -33,7 +33,7 @@ import com.example.Bookstore.domain.CategoryRepository;
 		model.addAttribute("categories", crepository.findAll());
     	return "addbook";
 	}
-
+	
 	@PostMapping("/addbook")
 	public String addBook(@ModelAttribute Book newBook) {
 	    brepository.save(newBook);
