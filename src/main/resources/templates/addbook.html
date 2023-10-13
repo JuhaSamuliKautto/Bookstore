@@ -13,6 +13,11 @@
 		.error {
 			color: red;
 		}
+		select {
+			
+			width: 10em;
+		
+		}
 	</style>
 </head>
 <body>
@@ -59,7 +64,7 @@
 					<td>Category: </td>
 					<td>
 						<select id="catlist" th:field="*{category}" class="form-control">
-							<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+							<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.cname}"></option>
 						</select>
 						<span th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error">Error</span>
 					</td>

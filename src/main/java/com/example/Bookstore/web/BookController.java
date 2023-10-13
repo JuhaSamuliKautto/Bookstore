@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import org.springframework.validation.annotation.Validated;
-
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookstoreRepository;
 import com.example.Bookstore.domain.CategoryRepository;
@@ -116,7 +114,7 @@ import jakarta.validation.Valid;
 	            existingBook.setPublicationYear(editedBook.getPublicationYear());
 	            existingBook.setIsbn(editedBook.getIsbn());
 	            existingBook.setPrice(editedBook.getPrice());
-
+	            existingBook.setCategory(editedBook.getCategory());
 	            
 	            brepository.save(existingBook);
 

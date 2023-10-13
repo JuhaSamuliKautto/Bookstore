@@ -19,14 +19,15 @@ import org.slf4j.LoggerFactory;
 // Tämä annotaatio merkitsee pääsovelluksen ja auttaa Springiä hallitsemaan sovelluksen konfiguraatiota
 @SpringBootApplication
 public class BookstoreApplication {
-
-    private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
-
+	
+	//private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+	
     // Käynnistää Spring Boot sovellukset
     public static void main(String[] args) {
         SpringApplication.run(BookstoreApplication.class, args);
     }
-
+    
+    /*
     @Bean
     // Toteuttaa bookDemo-metodin
     public CommandLineRunner bookDemo(BookstoreRepository brepository, CategoryRepository crepository, AppUserRepository urepository) {
@@ -59,7 +60,7 @@ public class BookstoreApplication {
         
     };
         
-    } 
+    } */
 }
 
 
